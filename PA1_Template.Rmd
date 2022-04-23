@@ -1,7 +1,7 @@
 ---
 title: "PA1_Template"
 author: "Bola Lawal"
-date: '2022-04-21'
+date: '2022-04-23'
 output:
   html_document: default
 ---
@@ -53,14 +53,14 @@ head(Total_Steps, 10)
 ```
 
 #1.2. Histogram of the total number of steps taken per day
-```{r}
+```{r, echo=TRUE}
 ggplot(Total_Steps, aes(x = steps)) +
   geom_histogram(fill = "green", binwidth = 500) +
   labs(title = "Steps per Day", x = "# of Steps", y = "Frequency")
 ```
 
 #1.3. Mean and median of the total number of steps taken per day
-```{r}
+```{r, echo=TRUE}
 Total_Steps[, .(Mean_Steps = mean(steps, na.rm = TRUE), Median_Steps = median(steps, na.rm = TRUE))]
 ```
 
@@ -106,7 +106,7 @@ Total_Steps <- activity_data[, c(lapply(.SD, sum)), .SDcols = c("steps"), by = .
 ```
 
 #4.2 Mean and median total number of steps taken per day
-```{r}
+```{r, echo=TRUE}
 Total_Steps[, .(Mean_Steps = mean(steps), Median_Steps = median(steps))]
 ggplot(Total_Steps, aes(x = steps)) + geom_histogram(fill = "green",binwidth = 500) + labs(title = "Daily Steps", x = "Steps", y = "Frequency")
 ```
@@ -128,7 +128,7 @@ activity_data_week[, `Weekday/Weekend` := as.factor(`Weekday/Weekend`)]
 ```
 
 #5.1 A panel plot containing a time series plot (i.e. type = "𝚕") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).
-```{r}
+```{r, echo=TRUE}
 activity_data_week[is.na(steps), "steps"] <- activity_data_week[, c(lapply(.SD, median, na.rm = TRUE)), .SDcols = c("steps")]
 Interval <- activity_data_week[, c(lapply(.SD, mean, na.rm = TRUE)), .SDcols = c("steps"), by = .(interval, `Weekday/Weekend`)] 
 ggplot(Interval , aes(x = interval , y = steps, color=`Weekday/Weekend`)) + geom_line() + labs(title = "Average Daily Steps by Day Type", x = "Interval", y = "# of Steps") + facet_wrap(~`Weekday/Weekend` , ncol = 1, nrow=2)
