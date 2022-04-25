@@ -136,4 +136,4 @@ activity_data_week[is.na(steps), "steps"] <- activity_data_week[, c(lapply(.SD, 
 Interval <- activity_data_week[, c(lapply(.SD, mean, na.rm = TRUE)), .SDcols = c("steps"), by = .(interval, `Weekday/Weekend`)] 
 ggplot(Interval , aes(x = interval , y = steps, color=`Weekday/Weekend`)) + geom_line() + labs(title = "Average Daily Steps by Day Type", x = "Interval", y = "# of Steps") + facet_wrap(~`Weekday/Weekend` , ncol = 1, nrow=2)
 ```
-![](https://github.com/HDBalls/Case-Study-1/blob/main/PA1_Template_files/unnamed-chunk-14-1.png)
+![](https://github.com/HDBalls/Case-Study-1/blob/main/PA1_Template_files/unnamed-chunk-16-1.png)
