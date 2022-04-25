@@ -1,13 +1,15 @@
 ---
 title: "PA1_Template"
 author: "Bola Lawal"
-date: '2022-04-23'
+date: '2022-04-25'
 output:
   html_document: default
 ---
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+
+```{r global_options}
+knitr::opts_chunk$set(fig.path='Figs/',echo = TRUE)
 ```
+
 ###Activity Monitoring Data
 ##Install the packages
 ```{r}

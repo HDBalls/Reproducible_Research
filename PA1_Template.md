@@ -58,6 +58,7 @@ ggplot(Total_Steps, aes(x = steps)) +
   geom_histogram(fill = "green", binwidth = 500) +
   labs(title = "Steps per Day", x = "# of Steps", y = "Frequency")
 ```
+![](https://github.com/HDBalls/Case-Study-1/blob/main/PA1_Template_files/unnamed-chunk-6-1.png)
 
 #1.3. Mean and median of the total number of steps taken per day
 ```{r, echo=TRUE}
@@ -70,6 +71,7 @@ Total_Steps[, .(Mean_Steps = mean(steps, na.rm = TRUE), Median_Steps = median(st
 Interval <- activity_data[, c(lapply(.SD, mean, na.rm = TRUE)), .SDcols = c("steps"), by = .(interval)] 
 ggplot(Interval, aes(x = interval , y = steps)) + geom_line(color="blue", size=1) + labs(title = "Average Daily Steps", x = "Interval", y = "Average Steps per day")
 ```
+![](https://github.com/HDBalls/Case-Study-1/blob/main/PA1_Template_files/unnamed-chunk-8-1.png)
 
 #2.2. 5-minute interval, on average across all the days in the dataset with the maximum number of steps
 ```{r}
@@ -110,6 +112,7 @@ Total_Steps <- activity_data[, c(lapply(.SD, sum)), .SDcols = c("steps"), by = .
 Total_Steps[, .(Mean_Steps = mean(steps), Median_Steps = median(steps))]
 ggplot(Total_Steps, aes(x = steps)) + geom_histogram(fill = "green",binwidth = 500) + labs(title = "Daily Steps", x = "Steps", y = "Frequency")
 ```
+![](https://github.com/HDBalls/Case-Study-1/blob/main/PA1_Template_files/unnamed-chunk-14-1.png)
 
 #4.3
 #   Mean_Steps      Median_Steps
@@ -133,3 +136,4 @@ activity_data_week[is.na(steps), "steps"] <- activity_data_week[, c(lapply(.SD, 
 Interval <- activity_data_week[, c(lapply(.SD, mean, na.rm = TRUE)), .SDcols = c("steps"), by = .(interval, `Weekday/Weekend`)] 
 ggplot(Interval , aes(x = interval , y = steps, color=`Weekday/Weekend`)) + geom_line() + labs(title = "Average Daily Steps by Day Type", x = "Interval", y = "# of Steps") + facet_wrap(~`Weekday/Weekend` , ncol = 1, nrow=2)
 ```
+![](https://github.com/HDBalls/Case-Study-1/blob/main/PA1_Template_files/unnamed-chunk-14-1.png)

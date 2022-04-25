@@ -11,7 +11,7 @@
 
 <meta name="author" content="Bola Lawal" />
 
-<meta name="date" content="2022-04-23" />
+<meta name="date" content="2022-04-25" />
 
 <title>PA1_Template</title>
 
@@ -365,11 +365,12 @@ pre code {
 
 <h1 class="title toc-ignore">PA1_Template</h1>
 <h4 class="author">Bola Lawal</h4>
-<h4 class="date">2022-04-23</h4>
+<h4 class="date">2022-04-25</h4>
 
 </div>
 
 
+<pre class="r"><code>knitr::opts_chunk$set(fig.path=&#39;Figs/&#39;,echo = TRUE)</code></pre>
 <p>###Activity Monitoring Data ##Install the packages</p>
 <pre class="r"><code>destination &lt;- getwd()
 r = getOption(&quot;repos&quot;)
@@ -388,14 +389,35 @@ install.packages(&quot;data.table&quot;)</code></pre>
 <pre><code>## Warning: restored &#39;data.table&#39;</code></pre>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  C:\Users\B A Lawal\AppData\Local\Temp\Rtmp8s5OUB\downloaded_packages</code></pre>
+##  C:\Users\B A Lawal\AppData\Local\Temp\RtmpsNehr2\downloaded_packages</code></pre>
 <pre class="r"><code>install.packages(&quot;ggplot2&quot;)</code></pre>
 <pre><code>## Installing package into &#39;C:/Users/B A Lawal/Documents/R/win-library/4.1&#39;
 ## (as &#39;lib&#39; is unspecified)</code></pre>
 <pre><code>## package &#39;ggplot2&#39; successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-##  C:\Users\B A Lawal\AppData\Local\Temp\Rtmp8s5OUB\downloaded_packages</code></pre>
+##  C:\Users\B A Lawal\AppData\Local\Temp\RtmpsNehr2\downloaded_packages</code></pre>
+<pre class="r"><code>install.packages(&quot;data.table&quot;)</code></pre>
+<pre><code>## Installing package into &#39;C:/Users/B A Lawal/Documents/R/win-library/4.1&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
+<pre><code>## package &#39;data.table&#39; successfully unpacked and MD5 sums checked</code></pre>
+<pre><code>## Warning: cannot remove prior installation of package &#39;data.table&#39;</code></pre>
+<pre><code>## Warning in file.copy(savedcopy, lib, recursive = TRUE):
+## problem copying C:\Users\B A Lawal\Documents\R\win-
+## library\4.1\00LOCK\data.table\libs\x64\datatable.dll to C:\Users\B A
+## Lawal\Documents\R\win-library\4.1\data.table\libs\x64\datatable.dll: Permission
+## denied</code></pre>
+<pre><code>## Warning: restored &#39;data.table&#39;</code></pre>
+<pre><code>## 
+## The downloaded binary packages are in
+##  C:\Users\B A Lawal\AppData\Local\Temp\RtmpsNehr2\downloaded_packages</code></pre>
+<pre class="r"><code>install.packages(&quot;ggplot2&quot;)</code></pre>
+<pre><code>## Installing package into &#39;C:/Users/B A Lawal/Documents/R/win-library/4.1&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
+<pre><code>## package &#39;ggplot2&#39; successfully unpacked and MD5 sums checked
+## 
+## The downloaded binary packages are in
+##  C:\Users\B A Lawal\AppData\Local\Temp\RtmpsNehr2\downloaded_packages</code></pre>
 <p>##Load the libraries</p>
 <pre class="r"><code>library(&quot;data.table&quot;)
 library(&quot;ggplot2&quot;)</code></pre>
@@ -449,8 +471,8 @@ number of missing values in the dataset</p>
 <pre class="r"><code>nrow(activity_data[is.na(steps),])</code></pre>
 <pre><code>## [1] 2304</code></pre>
 <p>#3.2. Devise a strategy for filling in all of the missing values in
-the dataset. # #Strategy used is to find the mean of the existing values
-and populate with the missing values.</p>
+the dataset. #Strategy used is to find the mean of the existing
+values.</p>
 <pre class="r"><code>activity_data[is.na(steps), &quot;steps&quot;] &lt;- activity_data[, c(lapply(.SD, mean, na.rm = TRUE)), .SDcols = c(&quot;steps&quot;)]</code></pre>
 <pre><code>## Warning in `[&lt;-.data.table`(`*tmp*`, is.na(steps), &quot;steps&quot;, value =
 ## structure(list(: 37.382600 (type &#39;double&#39;) at RHS position 1 truncated
